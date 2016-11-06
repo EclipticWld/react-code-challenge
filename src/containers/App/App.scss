@@ -1,0 +1,42 @@
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  &-Body {
+    flex: 1;
+    background-color: #e9edf5;
+
+  }
+
+  &-Topbar {
+    background-color: #fff;
+    color: #91a0ad;
+    height: 75px;
+    line-height: 75px;
+    padding: 0 2em;
+
+    h2 {
+      margin: 0;
+      line-height: 75px;
+    }
+  }
+
+  &-Content {
+    padding: 2em;
+    border-top: 1px solid #d8dbe3;
+    box-shadow: inset 0px 1px 0px 0px rgba(227,230,238,1);
+  }
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+}
+
+
+@media (min-width: 768px) {
+  .App {
+    flex-direction: row;
+    flex: 1;
+  }
+}

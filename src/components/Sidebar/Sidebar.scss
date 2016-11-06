@@ -1,0 +1,26 @@
+.AppNav {
+  flex: 0 0 14em;
+  order: -1;
+  background-color: #4a5864;
+}
+
+.Logo {
+  height: 75px;
+  line-height: 75px;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  background-color: #37414a;
+
+  a {
+    color: #fff !important;
+    text-decoration: none;
+  }
+}
+
+.NavListItem {
+  display: block;
+  padding: 1em 1em 1em;
+  color: #c7d4e0;
+  text-decoration: none;
+}

@@ -1,0 +1,20 @@
+.table {
+  border-collapse: collapse;
+  width: 100%;
+
+  thead th {
+    box-shadow: 0 1px 0 0 rba(0,0,0,0.4);
+  }
+
+  td, th {
+    border: 1px solid #e2e7e7;
+    padding: 16px;
+    text-align: left;
+    background-color: #fff;
+    color: #91a0ad;
+  }
+}
+
+.Loading {
+  background-color: #fff;
+}
