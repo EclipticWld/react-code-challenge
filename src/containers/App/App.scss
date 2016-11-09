@@ -1,7 +1,10 @@
+@import "../../styles/variables";
+
 .App {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  min-width: 768px;
 
   &-Body {
     flex: 1;
@@ -23,7 +26,7 @@
   }
 
   &-Content {
-    padding: 2em;
+    padding: $global-small-horizontal-padding;
     border-top: 1px solid #d8dbe3;
     box-shadow: inset 0px 1px 0px 0px rgba(227,230,238,1);
   }
@@ -38,5 +41,10 @@ h1, h2, h3, h4 {
   .App {
     flex-direction: row;
     flex: 1;
+    min-width: 768px;
+
+    &-Content {
+      padding: 2em;
+    }
   }
 }
