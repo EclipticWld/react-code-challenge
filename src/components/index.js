@@ -1,5 +1,6 @@
 import Table from './Table/Table';
 import Sidebar from './Sidebar/Sidebar';
-import Input from './Input/Input';
+import UserForm from './UserForm/UserForm';
+import Button from './Buttons/Button';
 
-export { Table, Sidebar, Input };
+export { Table, Sidebar, UserForm, Button };

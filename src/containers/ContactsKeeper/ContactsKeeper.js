@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Table } from '../../components';
 import Modal from 'react-modal';
+import { Table, UserForm, Button } from '../../components';
 import * as actions from '../../redux/actions';
 import { getContactsList, getIsFetching, getErrorMessage }
   from '../../redux/reducers/contacts';
 import './ContactsKeeper.css';
 
 const customStyles = {
-  content : {
+  overlay: {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(51, 51, 51, 0.6)'
+  },
+  content: {
     top                   : '50%',
     left                  : '50%',
     right                 : 'auto',
@@ -30,20 +38,20 @@ class ContactsKeeper extends Component {
     fetchContacts();
   }
 
-  createContact() {
-    const { addContact } = this.props;
-    addContact({
-      firstName: 'Greg',
-      lastName: 'Norman',
-      bithday: '1977.06.25',
-      phoneNumber: '+132384235',
-      email: 'Greg.Norman@gmail.com',
-      notes: 'interesting'
-    })
+  submitContact(data) {
+    // const { addContact } = this.props;
+    console.log('data', data);
+    // addContact({
+    //   firstName: 'Greg',
+    //   lastName: 'Norman',
+    //   bithday: '1977.06.25',
+    //   phoneNumber: '+132384235',
+    //   email: 'Greg.Norman@gmail.com',
+    //   notes: 'interesting'
+    // })
   }
 
   openModal = () => {
-    console.log('foobar')
     this.setState({modalIsOpen: true});
   }
 
@@ -57,31 +65,30 @@ class ContactsKeeper extends Component {
   }
 
   render() {
-    const { isFetching, contactsList } = this.props;
+    const { isFetching, contactsList, remoteSubmitUserForm } = this.props;
     contactsList.forEach(contact => {delete contact.id});
     const thead = ['First Name', 'Last Name', 'Date of Birthday', 'Phone',
       'Email', 'Notes'];
-    console.log('Modal', Modal);
 
     return (
-      <div className="ContactsKeeper">
-        <div className="ContactsKeeper-Nav">
+      <div className='ContactsKeeper'>
+        <div className='ContactsKeeper-Nav'>
           <button onClick={this.openModal}>Add contact</button>
           <Modal
             isOpen={this.state.modalIsOpen}
             onAfterOpen={this.afterOpenModal}
             onRequestClose={this.closeModal}
+
             style={customStyles}
-            contentLabel="Example Modal"
+            contentLabel='Example Modal'
           >
-            <h2 ref="subtitle">Add new contact</h2>
-            <button onClick={this.closeModal}>close</button>
-
-
+            <h2 ref='subtitle'>Add new contact</h2>
+            <UserForm />
+            <Button onClick={remoteSubmitUserForm} buttonType='success'>Submit</Button>
+            <Button onClick={this.closeModal}>Close</Button>
           </Modal>
         </div>
         <Table thead={thead} tbody={contactsList} isFetching={isFetching} />
-
       </div>
     )
   }

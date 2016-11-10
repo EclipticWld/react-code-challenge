@@ -1,3 +1,4 @@
+import { submit } from 'redux-form'
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import * as api from '../../api';
@@ -34,3 +35,7 @@ export const addContact = (data) => (dispatch) =>
       response: normalize(response, schema.contact)
     });
   });
+
+export const remoteSubmitUserForm = () => (dispatch) => {
+  dispatch(submit('userForm'));
+}
