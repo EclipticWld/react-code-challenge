@@ -1,4 +1,4 @@
-import { submit } from 'redux-form'
+import { submit, reset } from 'redux-form'
 import { normalize } from 'normalizr'
 import * as schema from './schema'
 import * as api from '../../api'
@@ -28,13 +28,25 @@ export const fetchContacts = (filter) => (dispatch, getState) => {
   )
 }
 
-export const addContact = (data) => (dispatch) =>
-  api.addContact(data).then(response => {
+export const submitContact = (values) => (dispatch) => {
+  dispatch({
+    type: 'ADD_CONTACT_REQUEST'
+  })
+
+  return api.addContact(values).then(response => {
     dispatch({
       type: 'ADD_CONTACT_SUCCESS',
       response: normalize(response, schema.contact)
     })
+    dispatch(reset('userForm'))
   })
+}
+
+export const resetContact = () => (dispatch) => {
+  dispatch({
+    type: 'ADD_CONTACT_RESET'
+  })
+}
 
 export const remoteSubmitUserForm = () => (dispatch) => {
   dispatch(submit('userForm'))

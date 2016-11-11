@@ -26,7 +26,7 @@ const Button = ({ children, buttonType, className, ...custom }) => (
 )
 
 Button.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.any.isRequired,
   buttonType: PropTypes.string,
   className: PropTypes.string
 }

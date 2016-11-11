@@ -1,15 +1,11 @@
 import React, { PropTypes } from 'react'
 import './Table.css'
 
-const renderRow = (row, index) => {
-  const rowData = Object.keys(row).map(key => row[key])
-  const columns = rowData.map((column, i) => <td key={i}>{column}</td>)
-  return (
-    <tr key={index}>
-      {columns}
-    </tr>
-  )
-}
+const renderRow = (rowData, index) => (
+  <tr key={index}>
+    {rowData.map((column, i) => <td key={i}>{column}</td>)}
+  </tr>
+)
 
 const Table = (props) => {
   const { thead, tbody, isFetching } = props

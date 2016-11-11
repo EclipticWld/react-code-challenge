@@ -36,35 +36,39 @@ class ContactKeeperView extends Component {
     fetchContacts()
   }
 
-  // submitContact (data) {
-    // const { addContact } = this.props
-    // addContact({
-    //   firstName: 'Greg',
-    //   lastName: 'Norman',
-    //   bithday: '1977.06.25',
-    //   phoneNumber: '+132384235',
-    //   email: 'Greg.Norman@gmail.com',
-    //   notes: 'interesting'
-    // })
-  // }
-
   openModal = () => {
     this.setState({modalIsOpen: true})
   }
 
-  afterOpenModal = () => {
-    this.refs.subtitle.style.color = '#f00'
-  }
-
   closeModal = () => {
     this.setState({modalIsOpen: false})
+    this.props.resetContact()
+  }
+
+  submitContact = (values) => {
+    this.props.submitContact(values)
   }
 
   render () {
-    const { isFetching, contactsList, remoteSubmitUserForm } = this.props
-    contactsList.forEach(contact => { delete contact.id })
+    const { isFetching, contactsList, remoteSubmitUserForm,
+     isContactSend, isContactSending } = this.props
     const thead = ['First Name', 'Last Name', 'Date of Birthday', 'Phone',
       'Email', 'Notes']
+    const colMapPattern = {
+      firstName: 1,
+      lastName: 2,
+      bithday: 3,
+      phoneNumber: 4,
+      email: 5,
+      notes: 6
+    }
+    const tBody = contactsList && contactsList
+      .map(contact => {
+        delete contact.id
+        return Object.keys(contact)
+          .sort((x, y) => colMapPattern[x] - colMapPattern[y])
+          .map((key) => contact[key])
+      })
 
     return (
       <div className='ContactsKeeper'>
@@ -74,16 +78,23 @@ class ContactKeeperView extends Component {
           </Button>
           <Modal
             isOpen={this.state.modalIsOpen}
-            onAfterOpen={this.afterOpenModal}
             onRequestClose={this.closeModal}
             style={modalStyles}
             contentLabel='Add new contact'
           >
-            <h2 ref='subtitle'>Add new contact</h2>
-            <UserForm />
+            <h2>Add new contact</h2>
+            <UserForm onSubmit={this.submitContact} />
             <div className='uk-margin-top'>
-              <Button onClick={remoteSubmitUserForm} buttonType='success'>
-                Submit
+              <Button
+                onClick={remoteSubmitUserForm}
+                disabled={isContactSending}
+                buttonType='success'>
+                {
+                  isContactSend ? <i className='fa fa-check' aria-hidden='true' />
+                  : isContactSending ? <i className='fa fa-spinner fa-spin' aria-hidden='true' />
+                  : <i className='fa fa-paper-plane-o' aria-hidden='true' />
+                }
+                &nbsp;Submit
               </Button>
               <Button
                 onClick={this.closeModal}
@@ -93,7 +104,7 @@ class ContactKeeperView extends Component {
             </div>
           </Modal>
         </div>
-        <Table thead={thead} tbody={contactsList} isFetching={isFetching} />
+        <Table thead={thead} tbody={tBody} isFetching={isFetching} />
       </div>
     )
   }
@@ -101,8 +112,12 @@ class ContactKeeperView extends Component {
 
 ContactKeeperView.propTypes = {
   fetchContacts: PropTypes.func.isRequired,
+  submitContact: PropTypes.func.isRequired,
+  resetContact: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   contactsList: PropTypes.array.isRequired,
-  remoteSubmitUserForm: PropTypes.func.isRequired
+  remoteSubmitUserForm: PropTypes.func.isRequired,
+  isContactSend: PropTypes.bool.isRequired,
+  isContactSending: PropTypes.bool.isRequired
 }
 export default ContactKeeperView

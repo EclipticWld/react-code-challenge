@@ -14,8 +14,8 @@ const fakeDatabase = {
     {
       id: v4(),
       firstName: 'Alex',
-      lastName: 'German',
       bithday: '1992.01.30',
+      lastName: 'German',
       phoneNumber: '9423432423',
       email: 'alex.german@gmail.com',
       notes: 'Hey there!'
@@ -35,7 +35,12 @@ export const addContact = (data) =>
   delay(1000).then(() => {
     const contact = {
       id: v4(),
-      ...data
+      firstName: data.firstName || '',
+      lastName: data.lastName || '',
+      bithday: data.bithday || '',
+      phoneNumber: data.phoneNumber || '',
+      email: data.email || '',
+      notes: data.notes || ''
     }
     fakeDatabase.contacts.push(contact)
     return contact

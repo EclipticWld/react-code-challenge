@@ -5,11 +5,20 @@
   min-height: 100vh;
   flex-direction: column;
   min-width: 768px;
+  max-width: 1440px;
+
+  @include desktop {
+    flex-direction: row;
+    flex: 1;
+    min-width: 768px;
+  }
 
   &-Body {
     flex: 1;
     background-color: #e9edf5;
-
+    @include desktop {
+      margin: $topbar-height 0 0 $global-sidebar-width;
+    }
   }
 
   &-Topbar {
@@ -18,33 +27,22 @@
     height: $topbar-height;
     line-height: $topbar-height;
     padding: 0 2em;
+    box-shadow: 0px 1px 0px 0px #e3e6ee;
 
-    h2 {
-      margin: 0;
-      line-height: $topbar-height;
-    }
+    @include desktop {
+      position: fixed;
+      top: 0;
+      left: $global-sidebar-width;
+      width: calc(100vw - #{$global-sidebar-width});
+    };
   }
 
   &-Content {
     padding: $global-small-horizontal-padding;
     border-top: 1px solid #d8dbe3;
-    box-shadow: inset 0px 1px 0px 0px rgba(227,230,238,1);
-  }
-}
 
-h1, h2, h3, h4 {
-  font-weight: 400;
-}
-
-
-@media (min-width: 768px) {
-  .App {
-    flex-direction: row;
-    flex: 1;
-    min-width: 768px;
-
-    &-Content {
-      padding: 2em;
+    @include desktop {
+      padding: $global-normal-horizontal-padding;
     }
   }
 }

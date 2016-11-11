@@ -1,9 +1,17 @@
 @import "../../styles/variables";
 
-.AppNav {
-  flex: 0 0 14em;
+$menu-left-padding: 1.5em;
+
+.App-Nav {
+  position: relative;
   order: -1;
   background-color: #4a5864;
+
+  @include desktop {
+    position: fixed;
+    width: $global-sidebar-width;
+    height: 100vh;
+  }
 }
 
 .Logo {
@@ -11,10 +19,15 @@
   flex-direction: column;
   justify-content: center;
   height: $topbar-height;
+  padding: 0 $menu-left-padding 0;
   font-weight: 700;
-  font-size: 20px;
   text-align: center;
   background-color: #37414a;
+  text-align: left;
+
+  @include desktop {
+    text-align: center;
+  }
 
   img {
     height: 50px;
@@ -23,7 +36,39 @@
 
 .NavListItem {
   display: block;
-  padding: 1em 1em 1em;
+  padding: 1em $menu-left-padding 1em;
   color: #c7d4e0;
   text-decoration: none;
+  letter-spacing: 0.1px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.Author-Info {
+  position: fixed;
+  top: 0;
+  right: 0;
+  line-height: $topbar-height;
+  padding: 0 $menu-left-padding;
+
+  &Item {
+    display: inline-block;
+    padding: 0 0 0 $menu-left-padding;
+  }
+
+  @include desktop {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    line-height: 2.5em;
+    padding: 1em $menu-left-padding;
+
+    &Item {
+      display: block;
+      padding: 0;
+    }
+  }
 }

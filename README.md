@@ -19,45 +19,24 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 
-### Deploy to GitHub Pages
+### Deploy to Heroku
 
->Note: this feature is available with `react-scripts@0.2.0` and higher.
+Deploy this project with special [Heroku Buildpack](https://github.com/mars/create-react-app-buildpack)
 
-First, open your `package.json` and add a `homepage` field.
-It could look like this:
-
-```js
-{
-  "name": "my-app",
-  "homepage": "http://myusername.github.io/my-app",
-  // ...
-}
-```
-
-Now, whenever you run `npm run build`, you will see a cheat sheet with a sequence of commands to deploy to GitHub pages:
-
-```sh
-git checkout -B gh-pages
-git add -f build
-git commit -am "Rebuild website"
-git push origin :gh-pages
-git subtree push --prefix build origin gh-pages
-git checkout -
-```
-
-You may copy and paste them, or put them into a custom shell script. You may also customize them for another hosting provider.
 
 ## Version
-react create app 6.1.0
+React Create App 6.1.0
+
 
 ## Code Style and eslint
 [JavaScript Standard Style](https://www.npmjs.com/package/eslint-config-standard-react)
 
+
 ## Backlog
 
-*  Add modal component for adding new users
-*  Add future for removing users
-*  Implement sorting by first name
-*  Add support for edit users profile
-*  Add pagination
-*  Make sidebar available for hiding
+- [x]  Add modal component for adding new users
+- [ ]  Add future for removing users
+- [ ]  Implement sorting by first name
+- [ ]  Add support for edit users profile
+- [ ]  Add pagination
+- [ ]  Make sidebar available for hiding
