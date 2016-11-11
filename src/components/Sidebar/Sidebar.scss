@@ -25,10 +25,6 @@ $menu-left-padding: 1.5em;
   background-color: #37414a;
   text-align: left;
 
-  @include desktop {
-    text-align: center;
-  }
-
   img {
     height: 50px;
   }
