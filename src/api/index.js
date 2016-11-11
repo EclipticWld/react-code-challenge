@@ -1,4 +1,4 @@
-import { v4 } from 'node-uuid';
+import { v4 } from 'node-uuid'
 
 const fakeDatabase = {
   contacts: [
@@ -21,22 +21,22 @@ const fakeDatabase = {
       notes: 'Hey there!'
     }
   ]
-};
+}
 
 const delay = (ms) =>
-  new Promise(resolve => setTimeout(resolve, ms));
+  new Promise(resolve => setTimeout(resolve, ms))
 
 export const fetchContacts = (filter) =>
   delay(1000).then(() => {
-    return fakeDatabase.contacts;
-  });
+    return fakeDatabase.contacts
+  })
 
 export const addContact = (data) =>
   delay(1000).then(() => {
     const contact = {
       id: v4(),
       ...data
-    };
-    fakeDatabase.contacts.push(contact);
-    return contact;
-  });
+    }
+    fakeDatabase.contacts.push(contact)
+    return contact
+  })

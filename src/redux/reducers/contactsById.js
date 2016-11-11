@@ -3,11 +3,11 @@ const contactsById = (state = {}, action) => {
     return {
       ...state,
       ...action.response.entities.contacts
-    };
+    }
   }
-  return state;
-};
+  return state
+}
 
-export default contactsById;
+export default contactsById
 
-export const getContact = (state, id) => state[id];
+export const getContact = (state, id) => state[id]

@@ -50,6 +50,9 @@ You may copy and paste them, or put them into a custom shell script. You may als
 ## Version
 react create app 6.1.0
 
+## Code Style and eslint
+[JavaScript Standard Style](https://www.npmjs.com/package/eslint-config-standard-react)
+
 ## Backlog
 
 *  Add modal component for adding new users

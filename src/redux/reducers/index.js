@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
-import { reducer as formReducer } from 'redux-form';
-import contacts from './contacts';
+import { combineReducers } from 'redux'
+import { routerReducer } from 'react-router-redux'
+import { reducer as formReducer } from 'redux-form'
+import contacts from './contacts'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -9,4 +9,4 @@ const rootReducer = combineReducers({
   contacts
 })
 
-export default rootReducer;
+export default rootReducer

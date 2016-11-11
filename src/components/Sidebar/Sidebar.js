@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { IndexLink } from 'react-router';
-import './Sidebar.css';
+import React, { PropTypes } from 'react'
+import { IndexLink } from 'react-router'
+import './Sidebar.css'
 
 const sidebarStyles = {
   link: {
@@ -10,25 +10,25 @@ const sidebarStyles = {
     }
   }
 }
-class Sidebar extends Component {
 
-  render() {
-    return (
-      <nav className="AppNav">
-        <div className="Logo">
-          <IndexLink to='/'>logo</IndexLink>
-        </div>
-        <div className="NavList">
-          <IndexLink
-            to='contacts-keeper'
-            className="NavListItem"
-            activeStyle={sidebarStyles.link.active}>
-              Contacts Keeper
-          </IndexLink>
-        </div>
-      </nav>
-    )
-  }
+const Sidebar = ({logo}) => (
+  <nav className='AppNav'>
+    <div className='Logo'>
+      <IndexLink to='/'><img src={logo} alt='logo' /></IndexLink>
+    </div>
+    <div className='NavList'>
+      <IndexLink
+        to='contact-keeper'
+        className='NavListItem'
+        activeStyle={sidebarStyles.link.active}>
+        Contacts Keeper
+      </IndexLink>
+    </div>
+  </nav>
+)
+
+Sidebar.propTypes = {
+  logo: PropTypes.any
 }
 
-export default Sidebar;
+export default Sidebar

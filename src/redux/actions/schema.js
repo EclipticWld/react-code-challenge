@@ -1,4 +1,4 @@
-import { Schema, arrayOf } from 'normalizr';
+import { Schema, arrayOf } from 'normalizr'
 
-export const contact = new Schema('contacts');
-export const arrayOfContacts = arrayOf(contact);
+export const contact = new Schema('contacts')
+export const arrayOfContacts = arrayOf(contact)

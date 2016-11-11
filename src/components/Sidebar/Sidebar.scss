@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .AppNav {
   flex: 0 0 14em;
   order: -1;
@@ -5,16 +7,17 @@
 }
 
 .Logo {
-  height: 75px;
-  line-height: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: $topbar-height;
   font-weight: 700;
   font-size: 20px;
   text-align: center;
   background-color: #37414a;
 
-  a {
-    color: #fff !important;
-    text-decoration: none;
+  img {
+    height: 50px;
   }
 }
 

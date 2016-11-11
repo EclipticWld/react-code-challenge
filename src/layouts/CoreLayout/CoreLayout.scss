@@ -15,13 +15,13 @@
   &-Topbar {
     background-color: #fff;
     color: #91a0ad;
-    height: 75px;
-    line-height: 75px;
+    height: $topbar-height;
+    line-height: $topbar-height;
     padding: 0 2em;
 
     h2 {
       margin: 0;
-      line-height: 75px;
+      line-height: $topbar-height;
     }
   }
 
