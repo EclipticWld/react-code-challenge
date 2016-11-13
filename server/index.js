@@ -30,17 +30,11 @@ const fakeDatabase = {
 }
 
 app.set('port', (process.env.PORT || 3001))
-
-// Express only serves static assets in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'))
-}
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/api/contactTable', (req, res) => {
-  delay(1000)
+  delay(500)
     .then(() => { res.json(fakeDatabase.contacts) })
   // res.json(fakeDatabase.contacts)
 })
@@ -56,10 +50,19 @@ app.post('/api/addContact', (req, res) => {
     notes: req.body.notes || ''
   }
   fakeDatabase.contacts.push(contact)
-  delay(1000)
+  delay(500)
     .then(() => { res.json(contact) })
   // res.json(contact)
 })
+
+// Express only serves static assets in production
+if (process.env.NODE_ENV === 'production') {
+  const path = require('path')
+  app.use(express.static('client/build'))
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'client/build', 'index.html'))
+  })
+}
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`)
