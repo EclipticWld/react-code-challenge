@@ -1,3 +1,9 @@
+## Installation
+```
+yarn install && cd client && yarn install && cd ..
+```
+
+
 ## Available Scripts
 
 In the project directory, you can run:

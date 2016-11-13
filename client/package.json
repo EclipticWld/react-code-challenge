@@ -1,5 +1,5 @@
 {
-  "name": "react-code-challenge",
+  "name": "react-code-challenge-client",
   "homepage": "https://react-code-dashboard.herokuapp.com/",
   "version": "0.0.1",
   "description": "Just for fun and experiments",
@@ -11,6 +11,7 @@
     "modal"
   ],
   "author": "Andrew EclipticWld",
+  "proxy": "http://localhost:3001/",
   "devDependencies": {
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
