@@ -51,6 +51,7 @@
     "json-loader": "0.5.4",
     "normalizr": "2.2.1",
     "object-assign": "4.1.0",
+    "node-sass": "3.11.2",
     "path-exists": "2.1.0",
     "postcss-loader": "1.0.0",
     "promise": "7.1.1",
@@ -75,8 +76,7 @@
   },
   "dependencies": {
     "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "node-sass": "3.11.2"
+    "react-dom": "^15.3.2"
   },
   "engines": {
     "node": "6.9.1",

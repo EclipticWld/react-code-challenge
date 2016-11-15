@@ -56,14 +56,19 @@ app.post('/api/addContact', (req, res) => {
 })
 
 // Express only serves static assets in production
-if (process.env.NODE_ENV === 'production') {
+// if (process.env.NODE_ENV === 'production') {
   const path = require('path')
+  const morgan = require('morgan')
   app.use(express.static('client/build'))
+  // Setup logger
+  app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'))
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '..', 'client/build', 'index.html'))
   })
-}
+// }
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`)
 })
+
+module.exports = app
