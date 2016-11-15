@@ -1,5 +1,6 @@
 import { v4 } from 'node-uuid'
 import bodyParser from 'body-parser'
+const morgan = require('morgan')
 const express = require('express')
 const app = express()
 
@@ -32,6 +33,8 @@ const fakeDatabase = {
 app.set('port', (process.env.PORT || 3001))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+// Setup logger
+app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'))
 
 app.get('/api/contactTable', (req, res) => {
   delay(500)
@@ -56,16 +59,13 @@ app.post('/api/addContact', (req, res) => {
 })
 
 // Express only serves static assets in production
-// if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   const path = require('path')
-  const morgan = require('morgan')
   app.use(express.static('client/build'))
-  // Setup logger
-  app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'))
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '..', 'client/build', 'index.html'))
   })
-// }
+}
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`)
