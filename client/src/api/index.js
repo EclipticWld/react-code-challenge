@@ -1,12 +1,12 @@
 import { checkStatus, parseJSON } from '../libs/fetchHelpers'
 
 export const fetchContacts = () =>
-  fetch('api/contactTable')
+  fetch('api/contacts')
     .then(checkStatus)
     .then(parseJSON)
 
 export const addContact = (data) =>
-  fetch('api/addContact', {
+  fetch('api/contact', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

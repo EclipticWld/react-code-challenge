@@ -33,7 +33,6 @@
     "mocha": "3.1.2",
     "mz": "2.5.0",
     "nodemon": "1.11.0",
-    "supertest": "2.0.1",
     "supertest-as-promised": "4.0.2",
     "webpack": "1.13.2"
   },
@@ -57,7 +56,7 @@
     "postinstall": "babel server -d dist",
     "dev": "nf start -p 3000 --procfile Procfile.dev",
     "dev-server": "nodemon server --exec babel-node",
-    "test": "mocha --compilers js:babel-register"
+    "test": "npm run postinstall && NODE_ENV=production mocha --compilers js:babel-register"
   },
   "babel": {
     "presets": [
