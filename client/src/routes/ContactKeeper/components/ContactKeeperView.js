@@ -32,8 +32,9 @@ class ContactKeeperView extends Component {
   }
 
   componentDidMount () {
-    const { fetchContacts } = this.props
-    fetchContacts()
+    // const { contacts } = this.props
+    console.log('this.props', this.props)
+    // contacts.request()
   }
 
   openModal = () => {
@@ -111,6 +112,7 @@ class ContactKeeperView extends Component {
 }
 
 ContactKeeperView.propTypes = {
+  // contacts: PropTypes.object.isRequired,
   fetchContacts: PropTypes.func.isRequired,
   submitContact: PropTypes.func.isRequired,
   resetContact: PropTypes.func.isRequired,

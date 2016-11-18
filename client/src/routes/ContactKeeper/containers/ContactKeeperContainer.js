@@ -1,17 +1,19 @@
 import { connect } from 'react-redux'
 import ContactKeeperView from '../components/ContactKeeperView'
-import { fetchContacts, submitContact, resetContact, remoteSubmitUserForm }
+import { fetchContacts, submitContact, resetContact, remoteSubmitUserForm, contacts }
   from '../../../redux/actions'
 import { getContactsList, getIsFetching, getErrorMessage }
   from '../../../redux/reducers/contacts'
 import { getIsContactSend, getIsContactSending, getContactErrorMessage }
   from '../../../redux/reducers/addContact'
 
+console.log('contacts contacts', contacts)
 const mapDispatchToProps = {
   fetchContacts,
   submitContact,
   resetContact,
-  remoteSubmitUserForm
+  remoteSubmitUserForm,
+  ...contacts
 }
 
 const mapStateToProps = (state) => ({

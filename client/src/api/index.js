@@ -5,7 +5,7 @@ export const fetchContacts = () =>
     .then(checkStatus)
     .then(parseJSON)
 
-export const addContact = (data) =>
+export const postContact = (data) =>
   fetch('api/contact', {
     method: 'POST',
     headers: {

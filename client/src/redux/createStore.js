@@ -3,7 +3,7 @@ import rootReducer from './reducers'
 import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga'
-import { helloSaga } from '../sagas'
+import root from '../sagas/sagas'
 
 export default (initialState = {}) => {
   const sagaMiddleware = createSagaMiddleware()
@@ -17,7 +17,7 @@ export default (initialState = {}) => {
     applyMiddleware(...middlewares)
   )
 
-  sagaMiddleware.run(helloSaga)
+  sagaMiddleware.run(root)
 
   return store
 }
