@@ -31,10 +31,9 @@ class ContactKeeperView extends Component {
     }
   }
 
-  componentDidMount () {
-    // const { contacts } = this.props
-    console.log('this.props', this.props)
-    // contacts.request()
+  componentWillMount () {
+    const { requestContacts } = this.props
+    requestContacts()
   }
 
   openModal = () => {
@@ -43,11 +42,10 @@ class ContactKeeperView extends Component {
 
   closeModal = () => {
     this.setState({modalIsOpen: false})
-    this.props.resetContact()
   }
 
   submitContact = (values) => {
-    this.props.submitContact(values)
+    this.props.postContact(values)
   }
 
   render () {
@@ -112,10 +110,8 @@ class ContactKeeperView extends Component {
 }
 
 ContactKeeperView.propTypes = {
-  // contacts: PropTypes.object.isRequired,
-  fetchContacts: PropTypes.func.isRequired,
-  submitContact: PropTypes.func.isRequired,
-  resetContact: PropTypes.func.isRequired,
+  requestContacts: PropTypes.func.isRequired,
+  postContact: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   contactsList: PropTypes.array.isRequired,
   remoteSubmitUserForm: PropTypes.func.isRequired,

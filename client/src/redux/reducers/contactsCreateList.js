@@ -5,7 +5,7 @@ const contactsCreateList = () => {
     switch (action.type) {
       case 'FETCH_CONTACTS_SUCCESS':
         return action.response.result
-      case 'ADD_CONTACT_SUCCESS':
+      case 'POST_CONTACT_SUCCESS':
         return [...state, action.response.result]
       default:
         return state

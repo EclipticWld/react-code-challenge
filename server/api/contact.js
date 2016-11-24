@@ -1,30 +1,27 @@
 import { v4 } from 'node-uuid'
-import delay from '../libs/delay'
 import fakeDatabase from '../libs/fakeDatabase'
 
-const initialProfile = {
-  firstName: '',
-  lastName: '',
-  bithday: '',
-  phoneNumber: '',
-  email: '',
-  notes: ''
-}
-const createProfile = (profile = initialProfile) => ({
+const createProfile = ({
+  firstName = null,
+  lastName = null,
+  bithday = null,
+  phoneNumber = null,
+  email = null,
+  notes = null
+}) => ({
   id: v4(),
-  firstName: profile.firstName,
-  lastName: profile.lastName,
-  bithday: profile.bithday,
-  phoneNumber: profile.phoneNumber,
-  email: profile.email,
-  notes: profile.notes
+  firstName: firstName,
+  lastName: lastName,
+  bithday: bithday,
+  phoneNumber: phoneNumber,
+  email: email,
+  notes: notes
 })
 
 function postContact (req, res) {
   const profile = createProfile(req.body)
   fakeDatabase.contacts.push(profile)
-  delay(500)
-    .then(() => { res.json(profile) })
+  res.json(profile)
 }
 
 export default { postContact }

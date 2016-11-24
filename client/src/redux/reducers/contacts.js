@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import contactsById, * as fromByIds from './contactsById'
 import contactsCreateList, * as fromByList from './contactsCreateList'
-import addContact from './addContact'
+import postContact from './postContact'
 
 const isFetching = (state = false, action) => {
   switch (action.type) {
@@ -28,7 +28,7 @@ const errorMessage = (state = null, action) => {
 }
 
 const contacts = combineReducers({
-  addContact,
+  postContact,
   byId: contactsById,
   byList: contactsCreateList(),
   isFetching,

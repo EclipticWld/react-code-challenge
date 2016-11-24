@@ -1,30 +1,34 @@
-// import { reset } from 'redux-form'
-import { call, put } from 'redux-saga/effects'
+import { reset } from 'redux-form'
+import { takeLatest, delay } from 'redux-saga'
+import { call, put, take, fork } from 'redux-saga/effects'
 import * as actions from '../redux/actions'
 import * as api from '../api'
 
 export function* fetchContacts () {
-  yield put(actions.contacts.request())
-  const response = yield call(api.fetchContacts)
-  if (response) {
+  yield call(delay, 1000)
+  try {
+    const response = yield call(api.fetchContacts)
     yield put(actions.contacts.success(response))
-  } else {
-    // yield put(actions.contacts.invalidateContacts(response))
+  } catch (error) {
+    yield put(actions.contacts.failure(error))
   }
 }
 
-// export function* postContact (date) {
-//   yield put(actions.addContact())
-//   try {
-//     const contact = yield call(api.postContact(date))
-//     yield put(actions.postedContact(contact))
-//     yield put(reset('userForm'))
-//   } catch (error) {
-//     yield put(actions.invalidateContacts(error))
-//   }
-// }
+export function* postContact () {
+  while (true) {
+    const request = yield take('POST_CONTACT')
+    yield call(delay, 500)
+    try {
+      const apiResponse = yield call(api.postContact, request.data)
+      yield put(actions.contact.success(apiResponse))
+      yield put(reset('userForm'))
+    } catch (error) {
+      yield put(actions.contact.failure(error))
+    }
+  }
+}
 
 export default function* root () {
-  yield fetchContacts
-  // yield fork(postContact)
+  yield takeLatest('FETCH_CONTACTS_REQUEST', fetchContacts)
+  yield fork(postContact)
 }
