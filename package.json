@@ -33,9 +33,8 @@
     "mocha": "3.1.2",
     "mz": "2.5.0",
     "nodemon": "1.11.0",
-    "supertest": "^2.0.1",
-    "supertest-as-promised": "^4.0.2",
-    "typescript": "^2.0.10",
+    "supertest": "2.0.1",
+    "supertest-as-promised": "4.0.2",
     "webpack": "1.13.2"
   },
   "dependencies": {
@@ -46,7 +45,7 @@
     "body-parser": "1.15.2",
     "express": "4.14.0",
     "foreman": "1.4.1",
-    "mongoose": "^4.7.1",
+    "mongoose": "4.7.1",
     "morgan": "1.7.0"
   },
   "engines": {
